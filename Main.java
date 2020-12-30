@@ -13,8 +13,33 @@ class Main {
     System.out.println(maxSubsetSum(arr));
 
   }
+  static int maxSubsetSum(int[] arr) {
+
+      int l=arr.length;
+      if(l==2)
+      {
+        return Math.max(arr[l-1], arr[l-2]);
+      }
+      else if(l==1)
+      {
+        return arr[l-1];
+      }
+     
+      
+      int sum[] =new int[l];
+      arr[0]=Math.max(0, arr[0]);
+      arr[1]=Math.max(arr[1],arr[0]);
+      
+      for(int i=2;i<l;i++)
+      {
+          arr[i]=Math.max(arr[i-1], arr[i]+arr[i-2]);
+           
+      }
+      return arr[l-1];
+
+    }
     // Complete the maxSubsetSum function below.
-    static int maxSubsetSum(int[] arr) {
+    static int wmaxSubsetSum(int[] arr) {
 
       int l=arr.length;
       if(l==2)
